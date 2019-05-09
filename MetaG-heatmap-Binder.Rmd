@@ -1,7 +1,7 @@
 ---
 title: "MetaG-heatmap-Binder"
-subtitle: "SUBTITLE"
-author: "Laetitia and Guillaume"
+subtitle: "This time use only RMarkdown file as input"
+author: "Laetitia and Charles and Marian and Guillaume"
 date: "`r format(Sys.Date(), '%d %b %Y')`"
 output:
   html_document: 
@@ -32,7 +32,7 @@ sessionInfo()
 
 ```{r}
 # data
-MAGnum <- read.delim("input_matrix_v1.txt")
+MAGnum <- read.delim("input_matrix_v2.txt")
 rownames(MAGnum) <- MAGnum[,1]
 counts <- MAGnum[,-1]
 counts[,1]
@@ -44,4 +44,3 @@ MAGcountsNum <- sapply(counts, as.numeric)
 ```{r}
 heatmap(MAGcountsNum)
 ```
-
