@@ -1,6 +1,8 @@
 # R Binder Example
 
-This repo plots a heatmap after you mapped reads in your samples against bins or genomes you created. 
+This repo uses only an RMarkdown script as input. I followed the following tutorial: https://kbroman.org/blog/2019/02/18/omg_binder/
+
+It plots a heatmap after you mapped reads in your samples against bins or genomes you created. 
 
  - Launch in RStudio: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/megaptera-helvetiae/MAGrepresentation-Binder/master)
 
