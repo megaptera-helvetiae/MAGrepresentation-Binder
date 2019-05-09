@@ -2,7 +2,7 @@
 
 This repo plots a heatmap after you mapped reads in your samples against bins or genomes you created. 
 
- - Launch in RStudio: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/megaptera-helvetiae/MetaG-heat-Binder/master)
+ - Launch in RStudio:
 
 Example files included:
 
