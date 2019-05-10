@@ -11,18 +11,18 @@ ALI310	Bodega Bay
 ALI311	Bodega Bay
 ALI312	Bodega Bay
 ALI316	Bodega Bay
-ASL10	Alaksa
-ASL11	Alaksa
-ASL12	Alaksa
-ASL1	Alaksa
-ASL2	Alaksa
-ASL3	Alaksa
-ASL4	Alaksa
-ASL5	Alaksa
-ASL6	Alaksa
-ASL7	Alaksa
-ASL8	Alaksa
-ASL9	Alaksa
+ASL10	Alaska
+ASL11	Alaska
+ASL12	Alaska
+ASL1	Alaska
+ASL2	Alaska
+ASL3	Alaska
+ASL4	Alaska
+ASL5	Alaska
+ASL6	Alaska
+ASL7	Alaska
+ASL8	Alaska
+ASL9	Alaska
 BB501	Bodega Bay
 BB502	Bodega Bay
 BB503	Bodega Bay
