@@ -17,8 +17,8 @@ Example files included:
 ## Output 
 
 Example output includes: 
-![alt text](figures/heatmap-relativeAbundance-2-1.png)
-![alt text](figures/non-interactive-MAGabund-1.png)
+![alt text](Figures/heatmap-relativeAbundance-2-1.png)
+![alt text](Figures/non-interactive-MAGabund-1.png)
 
  
 # Author ORCID IDs:
