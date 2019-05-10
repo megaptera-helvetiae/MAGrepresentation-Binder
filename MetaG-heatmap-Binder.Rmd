@@ -27,20 +27,190 @@ knitr::opts_chunk$set(echo = TRUE)
 # session info
 sessionInfo()
 ```
+# Load-libraries
+
+```{r load-libraries}
+library(tibble)
+library(magrittr)
+library(gplots)
+library(dplyr)
+```
 
 # Data
 
-```{r}
-# data
-MAGnum <- read.delim("input_matrix_v2.txt")
-rownames(MAGnum) <- MAGnum[,1]
-counts <- MAGnum[,-1]
-counts[,1]
-MAGcountsNum <- sapply(counts, as.numeric)
+```{r data-loading}
+# Read in all the data
+# Rel Abund = (Sum of Contig count)/(QC sequence abundace)
+MAGnum_df <- read.delim("input_matrix_v2.txt") %>%
+    tibble::column_to_rownames(var = "X")
+
+MAGnum_mat <- MAGnum_df %>%
+    data.matrix()
+
+MAGnum_count <- read.table("input_matrix_v1.counts.txt", sep="\t", header=TRUE)
+rownames(MAGnum_count) <- MAGnum_count[,1]
+MAGnum_count<-MAGnum_count[,-1]
+head(MAGnum_count)
+
+# read in the Bin stats
+bin_stats <- read.table("bin_stats.txt", sep="\t", header=TRUE);
+rownames(bin_stats)<-bin_stats[,1]
+bin_stats<- bin_stats[,-1]
+
+# Select the Top X abundance bins
+abundant_mags <- MAGnum_mat[rowMeans(MAGnum_mat) > 0.0001, ]
+
+# read in the Sample metadata
+
+metadat <- 
+  read.table("Sample_metadata.txt", sep = "\t", header = TRUE) %>%
+  mutate(colors = ifelse(Location == "Alaska", "cornflowerblue",
+                         ifelse(Location == "Bodega Bay", "red",
+                                ifelse(Location == "Japan North", "darkorchid",
+                                       ifelse(Location == "Japan South", "darkorchid1",
+                                              ifelse(Location == "Massachusetts", "deeppink",
+                                                     ifelse(Location == "North Carolina", "darkslategray3",
+                                                            ifelse(Location == "Quebec", "darkorange",
+                                                                   ifelse(Location == "San Diego", "green4",
+                                                                          ifelse(Location == "Washington", "ivory4",
+                                                                                 ifelse(Location == "Norway", "firebrick",
+                                                                                        ifelse(Location == "Sweden", "dodgerblue4",
+                                                                                               ifelse(Location == "Wales", "gold2",
+                                                                                                      ifelse(Location == "Portugal", "forestgreen",
+                                                                                                             ifelse(Location == "French Med", "deepskyblue",
+                                                                                                                    ifelse(Location == "Croatia", "firebrick1",
+                                                                                                                                  NA))))))))))))))))
+
+# Set the colors of the different columns going in
+colz <- metadat$colors
+# Set the color palette
+my_palette <- colorRampPalette(c("red","white ", "blue"))(n = 299)
 ```
+
+# Normalization
+```{r data-normalized, fig.height=10, fig.width=12}
+# Normalizing the matrix 
+# Dividing rows by the genome size for the bin
+# Genome size is different from Bin size
+# Genome size is BinSize * BinCompletion
+
+# Calculate the genome size
+genome_sizes<- bin_stats$size * bin_stats$SCG_completeness
+
+# Do the normalization
+MAGnum_norm<-t(t(MAGnum_count) / genome_sizes)
+
+
+
+```
+
 
 # Plot
+## Raw relative abundance data
+```{r heatmap-relativeAbundance-1, fig.height=10, fig.width=12}
+# Without any scaling 
+heatmap.2(MAGnum_mat, 
+          main = "NOT scaled Relative Abundance Data",
+          distfun = function(x) dist(x, method = "euclidean"),
+          hclustfun = function(x) hclust(x,method = "complete"),
+          #scale = "row",
+          col = my_palette,
+          trace = "none",
+          ColSideColors = colz,
+          key = TRUE, symkey = FALSE, 
+          density.info = "none", srtCol = 30,
+          margins=c(5.5,7), cexRow = 1.25, cexCol = 1.25,
+          key.xlab = "MAG Abundance",
+          lhei = c(1.5,9), 
+          key.title=NA)
 
-```{r}
-heatmap(MAGcountsNum)
+legend(y=0.75, x=0.05, 
+       xpd=TRUE,     
+       legend = unique(metadat$Location),
+       col = unique(metadat$colors), 
+       lty= 1, lwd = 5, cex=.7)
 ```
+
+## Scaled relative abundance
+```{r heatmap-relativeAbundance-2, fig.height=10, fig.width=12}
+
+heatmap.2(MAGnum_mat, 
+          main="Relative abundance scaled",
+        distfun = function(x) dist(x, method = "euclidean"),
+        hclustfun = function(x) hclust(x,method = "complete"),
+        scale = "row",
+        col = my_palette, 
+        trace = "none",
+        key = TRUE, symkey = FALSE, 
+        density.info = "none", srtCol = 30,
+        margins=c(5.5,7), cexRow = 1.25,cexCol = 1.25,
+        key.xlab = "MAG Abundance",
+        lhei = c(1.5,9), 
+        key.title=NA,
+        ColSideColors = colz
+        )
+legend(y=0.75, x=0.05, 
+       xpd=TRUE,     
+       legend = unique(metadat$Location),
+       col = unique(metadat$colors), 
+       lty= 1, lwd = 5, cex=.7)
+
+```
+
+
+
+## Scaled normalized data
+### Counts per Bin Per sample divided by genome size
+```{r heatmap-normalized-scaled, fig.height=10, fig.width=12}
+
+# WITH scaling 
+heatmap.2(MAGnum_norm, 
+          main = "Scaled Normalized Data",
+          distfun = function(x) dist(x, method = "euclidean"),
+          hclustfun = function(x) hclust(x,method = "complete"),
+          scale = "row",
+          col = my_palette,
+          trace = "none",
+          key = TRUE, symkey = FALSE, 
+          density.info = "none", srtCol = 30,
+          margins=c(5.5,7), cexRow = 1.25, cexCol = 1.25,
+          key.xlab = "MAG Abundance",
+          lhei = c(1.5,9), 
+          key.title=NA,
+          ColSideColors = colz)
+
+legend(y=0.75, x=0.05, 
+       xpd=TRUE,     
+       legend = unique(metadat$Location),
+       col = unique(metadat$colors), 
+       lty= 1, lwd = 5, cex=.7)
+```
+
+
+## Scaled MAGs > 0.0001 abundance
+``` {r heatmap-TopX-NOTscaled, fig.height=10, fig.width=12}
+
+# WITH scaling 
+heatmap.2(abundant_mags, 
+          main = "Scaled most abundant MAGs",
+          distfun = function(x) dist(x, method = "euclidean"),
+          hclustfun = function(x) hclust(x,method = "complete"),
+          scale = "row",
+          col = my_palette,
+          trace = "none",
+          key = TRUE, symkey = FALSE, 
+          density.info = "none", srtCol = 30,
+          margins=c(5.5,7), cexRow = 1.25, cexCol = 1.25,
+          key.xlab = "MAG Abundance",
+          lhei = c(1.5,9), 
+          key.title=NA,
+          ColSideColors = colz)
+
+legend(y=0.75, x=0.05, 
+       xpd=TRUE,     
+       legend = unique(metadat$Location),
+       col = unique(metadat$colors), 
+       lty= 1, lwd = 5, cex=.7)
+
+```
+
