@@ -12,7 +12,7 @@ output:
     toc_depth: 3
     code_folding: show
 editor_options:
-  chunk_output_type: inline
+  chunk_output_type: console
 ---
 
 
@@ -27,17 +27,20 @@ knitr::opts_chunk$set(echo = TRUE)
 # session info
 sessionInfo()
 ```
-# Load-libraries
 
+# Load Libraries
 ```{r load-libraries}
 library(tibble)
 library(magrittr)
 library(gplots)
 library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(plotly)
+library(DT)
 ```
 
-# Data
-
+# Load Data
 ```{r data-loading}
 # Read in all the data
 # Rel Abund = (Sum of Contig count)/(QC sequence abundace)
@@ -60,8 +63,8 @@ bin_stats<- bin_stats[,-1]
 # Select the Top X abundance bins
 abundant_mags <- MAGnum_mat[rowMeans(MAGnum_mat) > 0.0001, ]
 
-# read in the Sample metadata
-
+# read in the Sample metadata 
+# Add a new column with color information for plotting
 metadat <- 
   read.table("Sample_metadata.txt", sep = "\t", header = TRUE) %>%
   mutate(colors = ifelse(Location == "Alaska", "cornflowerblue",
@@ -78,11 +81,29 @@ metadat <-
                                                                                                ifelse(Location == "Wales", "gold2",
                                                                                                       ifelse(Location == "Portugal", "forestgreen",
                                                                                                              ifelse(Location == "French Med", "deepskyblue",
-                                                                                                                    ifelse(Location == "Croatia", "firebrick1",
+                                                                                                                    ifelse(Location == "Croatia", "black",
                                                                                                                                   NA))))))))))))))))
 
 # Set the colors of the different columns going in
 colz <- metadat$colors
+
+location_colors <- c(
+  Alaska = "cornflowerblue",
+  "Bodega Bay" = "red",
+  "Japan North" = "darkorchid",
+  "Japan South" = "darkorchid1",
+  Massachusetts = "deeppink",
+  "North Carolina" = "darkslategray3",
+  Quebec = "darkorange",
+  "San Diego" =  "green4",
+  Washington = "ivory4",
+  Norway = "firebrick",
+  Sweden = "dodgerblue4",
+  Wales = "gold2",
+  Portugal = "forestgreen",
+  "French Med" = "deepskyblue",
+  Croatia = "black")
+
 # Set the color palette
 my_palette <- colorRampPalette(c("red","white ", "blue"))(n = 299)
 ```
@@ -99,9 +120,6 @@ genome_sizes<- bin_stats$size * bin_stats$SCG_completeness
 
 # Do the normalization
 MAGnum_norm<-t(t(MAGnum_count) / genome_sizes)
-
-
-
 ```
 
 
@@ -124,6 +142,7 @@ heatmap.2(MAGnum_mat,
           lhei = c(1.5,9), 
           key.title=NA)
 
+# Add legend
 legend(y=0.75, x=0.05, 
        xpd=TRUE,     
        legend = unique(metadat$Location),
@@ -133,7 +152,6 @@ legend(y=0.75, x=0.05,
 
 ## Scaled relative abundance
 ```{r heatmap-relativeAbundance-2, fig.height=10, fig.width=12}
-
 heatmap.2(MAGnum_mat, 
           main="Relative abundance scaled",
         distfun = function(x) dist(x, method = "euclidean"),
@@ -147,14 +165,14 @@ heatmap.2(MAGnum_mat,
         key.xlab = "MAG Abundance",
         lhei = c(1.5,9), 
         key.title=NA,
-        ColSideColors = colz
-        )
+        ColSideColors = colz)
+
+# Add legend
 legend(y=0.75, x=0.05, 
        xpd=TRUE,     
        legend = unique(metadat$Location),
        col = unique(metadat$colors), 
        lty= 1, lwd = 5, cex=.7)
-
 ```
 
 
@@ -179,6 +197,7 @@ heatmap.2(MAGnum_norm,
           key.title=NA,
           ColSideColors = colz)
 
+# Add legend
 legend(y=0.75, x=0.05, 
        xpd=TRUE,     
        legend = unique(metadat$Location),
@@ -187,12 +206,11 @@ legend(y=0.75, x=0.05,
 ```
 
 
-## Scaled MAGs > 0.0001 abundance
-``` {r heatmap-TopX-NOTscaled, fig.height=10, fig.width=12}
-
+## Scaled Meanm Abundance MAGs > 0.0001 
+```{r heatmap-TopX-NOTscaled, fig.height=10, fig.width=12}
 # WITH scaling 
 heatmap.2(abundant_mags, 
-          main = "Scaled most abundant MAGs",
+          main = "Scaled Mean Top Abundant MAGs",
           distfun = function(x) dist(x, method = "euclidean"),
           hclustfun = function(x) hclust(x,method = "complete"),
           scale = "row",
@@ -212,5 +230,47 @@ legend(y=0.75, x=0.05,
        col = unique(metadat$colors), 
        lty= 1, lwd = 5, cex=.7)
 
+```
+
+
+
+# Top MAG Abundance Plot
+
+```{r abundance-plots, fig.width=10, fig.height=8}
+# Select the Top X abundance bins
+top_mags <- 
+  MAGnum_mat[rowMeans(MAGnum_mat) > 0.001, ]
+
+# How many MAGs?
+num_MAGs <- nrow(top_mags)
+
+# Prepare dataframe for plotting
+abund_df <- top_mags %>%
+  t() %>%
+  as.data.frame() %>%
+  tibble::rownames_to_column(var = "MAG") %>%
+  rename(Sample = MAG) %>%
+  gather("MAG", "norm_abund", 2:(num_MAGs+1)) %>%
+  left_join(metadat, by = "Sample") %>%
+  dplyr::select(-colors) 
+
+# What's the data frame look like?
+datatable(abund_df, options = list(pageLength = 10))
+
+# Plot each MAG by location
+MAG_abund_plot <- 
+  ggplot(abund_df, 
+       aes(x = Location, y = norm_abund, color = Location, fill = Location)) + 
+  geom_jitter() + 
+  #geom_boxplot(alpha = 0.4, outlier.shape = NA) + 
+  theme_minimal() + 
+  scale_color_manual(values = location_colors) +
+  scale_fill_manual(values = location_colors) +
+  facet_wrap(~MAG, scales = "free") +
+  labs(y = "Normalized MAG Abundance") + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1))
+
+# Interactive Plot 
+ggplotly(MAG_abund_plot) # Make the plot interactive
 ```
 
