@@ -1,0 +1,215 @@
+Sample	Location
+ALI301	Bodega Bay
+ALI302	Bodega Bay
+ALI303	Bodega Bay
+ALI304	Bodega Bay
+ALI305	Bodega Bay
+ALI306	Bodega Bay
+ALI307	Bodega Bay
+ALI309	Bodega Bay
+ALI310	Bodega Bay
+ALI311	Bodega Bay
+ALI312	Bodega Bay
+ALI316	Bodega Bay
+ASL10	Alaksa
+ASL11	Alaksa
+ASL12	Alaksa
+ASL1	Alaksa
+ASL2	Alaksa
+ASL3	Alaksa
+ASL4	Alaksa
+ASL5	Alaksa
+ASL6	Alaksa
+ASL7	Alaksa
+ASL8	Alaksa
+ASL9	Alaksa
+BB501	Bodega Bay
+BB502	Bodega Bay
+BB503	Bodega Bay
+BB504	Bodega Bay
+BB505	Bodega Bay
+BB506	Bodega Bay
+BB507	Bodega Bay
+BB508	Bodega Bay
+BB509	Bodega Bay
+BB510	Bodega Bay
+BB511	Bodega Bay
+BB512	Bodega Bay
+BBMa1901	Bodega Bay
+BBMa1902	Bodega Bay
+BBMa1903	Bodega Bay
+BBMa1904	Bodega Bay
+BBMa1905	Bodega Bay
+BBMa1906	Bodega Bay
+BBMa1907	Bodega Bay
+BBMa1908	Bodega Bay
+BBMa1909	Bodega Bay
+BBMa1910	Bodega Bay
+BBMa1911	Bodega Bay
+BBMa1912	Bodega Bay
+BBMb2001	Bodega Bay
+BBMb2002	Bodega Bay
+BBMb2003	Bodega Bay
+BBMb2004	Bodega Bay
+BBMb2005	Bodega Bay
+BBMb2006	Bodega Bay
+BBMb2007	Bodega Bay
+BBMb2008	Bodega Bay
+BBMb2009	Bodega Bay
+BBMb2010	Bodega Bay
+BBMb2011	Bodega Bay
+BBMb2012	Bodega Bay
+JN101	Japan North
+JN102	Japan North
+JN103	Japan North
+JN104	Japan North
+JN105	Japan North
+JN106	Japan North
+JN107	Japan North
+JN108	Japan North
+JN109	Japan North
+JN110	Japan North
+JN111	Japan North
+JN112	Japan North
+JS201	Japan South
+JS202	Japan South
+JS203	Japan South
+JS204	Japan South
+JS205	Japan South
+JS206	Japan South
+JS207	Japan South
+JS208	Japan South
+JS209	Japan South
+JS210	Japan South
+JS211	Japan South
+JS212	Japan South
+MA801	Massachusetts
+MA802	Massachusetts
+MA803	Massachusetts
+MA804	Massachusetts
+MA805	Massachusetts
+MA806	Massachusetts
+MA807	Massachusetts
+MA808	Massachusetts
+MA809	Massachusetts
+MA810	Massachusetts
+MA811	Massachusetts
+MA812	Massachusetts
+NC1103	North Carolina
+NC1104	North Carolina
+NC1105	North Carolina
+NC1106	North Carolina
+NC1107	North Carolina
+NC1108	North Carolina
+NC1109	North Carolina
+NC1111	North Carolina
+NC1112	North Carolina
+NC1113	North Carolina
+NC1114	North Carolina
+NC1115	North Carolina
+QU701	Quebec
+QU702	Quebec
+QU703	Quebec
+QU704	Quebec
+QU705	Quebec
+QU706	Quebec
+QU707	Quebec
+QU708	Quebec
+QU709	Quebec
+QU710	Quebec
+QU711	Quebec
+QU712	Quebec
+SD601	San Diego
+SD602	San Diego
+SD603	San Diego
+SD604	San Diego
+SD605	San Diego
+SD606	San Diego
+SD607	San Diego
+SD608	San Diego
+SD609	San Diego
+SD610	San Diego
+SD611	San Diego
+SD612	San Diego
+WAS401	Washington
+WAS402	Washington
+WAS403	Washington
+WAS404	Washington
+WAS405	Washington
+WAS406	Washington
+WAS407	Washington
+WAS408	Washington
+WAS409	Washington
+WAS410	Washington
+WAS411	Washington
+WAS412	Washington
+ZM1201	Norway
+ZM1202	Norway
+ZM1203	Norway
+ZM1204	Norway
+ZM1205	Norway
+ZM1206	Norway
+ZM1207	Norway
+ZM1208	Norway
+ZM1209	Norway
+ZM1210	Norway
+ZM1211	Norway
+ZM1212	Norway
+ZM1401	Sweeden
+ZM1402	Sweeden
+ZM1403	Sweeden
+ZM1404	Sweeden
+ZM1405	Sweeden
+ZM1406	Sweeden
+ZM1407	Sweeden
+ZM1408	Sweeden
+ZM1409	Sweeden
+ZM1410	Sweeden
+ZM1411	Sweeden
+ZM1412	Sweeden
+ZM1501	Wales
+ZM1502	Wales
+ZM1503	Wales
+ZM1504	Wales
+ZM1505	Wales
+ZM1506	Wales
+ZM1507	Wales
+ZM1508	Wales
+ZM1509	Wales
+ZM1510	Wales
+ZM1511	Wales
+ZM1512	Wales
+ZM1602	Portugal
+ZM1603	Portugal
+ZM1604	Portugal
+ZM1605	Portugal
+ZM1606	Portugal
+ZM1607	Portugal
+ZM1608	Portugal
+ZM1609	Portugal
+ZM1610	Portugal
+ZM1611	Portugal
+ZM1612	Portugal
+ZM1701	French Med
+ZM1702	French Med
+ZM1703	French Med
+ZM1704	French Med
+ZM1705	French Med
+ZM1706	French Med
+ZM1707	French Med
+ZM1708	French Med
+ZM1709	French Med
+ZM1710	French Med
+ZM1711	French Med
+ZM1712	French Med
+ZM1801	Croatia
+ZM1802	Croatia
+ZM1803	Croatia
+ZM1804	Croatia
+ZM1805	Croatia
+ZM1806	Croatia
+ZM1807	Croatia
+ZM1808	Croatia
+ZM1809	Croatia
+ZM1810	Croatia
+ZM1811	Croatia
