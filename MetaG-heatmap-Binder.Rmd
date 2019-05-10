@@ -17,7 +17,8 @@ editor_options:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.path="./Figures/")  # Set the figure options
 ```
 
 
@@ -273,4 +274,10 @@ MAG_abund_plot <-
 # Interactive Plot 
 ggplotly(MAG_abund_plot) # Make the plot interactive
 ```
+
+
+```{r non-interactive-MAGabund, fig.width=10, fig.height=8}
+MAG_abund_plot
+```
+
 
