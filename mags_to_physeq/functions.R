@@ -43,17 +43,43 @@ taxtab <- tax_table(combined_matrix_2)
 return(taxtab)
 }
 
+
+
+province_filename <- "Tara_Oceans_Med/Sample-Province.tsv"
+sizeFraction_filename <- "Tara_Oceans_Med/Sample-SizeFraction.tsv"
+
+import_metadata<- function(province_filename, sizeFraction_filename) {
+  # Read in the provice info
+  prov_dat <- read.table(province_filename, sep = "\t") 
+  
+  # Read in the size fraction info
+  sizeFrac_dat <- read.table(sizeFraction_filename, sep = "\t")
+  
+  # Join together
+  metadat <- left_join(prov_dat, sizeFrac_dat, by = "V1") %>%
+    distinct() %>%
+    column_to_rownames(var = "V1") %>%
+    rename(province = "V2.x", size_fraction = "V2.y")
+  metadat_df <- sample_data(metadat)
+  return(metadat_df)
+}
+
+
+import_otu
+
+
 # Import the tax data
-tax <- import_gtdbtk_taxonomy_and_checkm(taxonomy_filename = "Tara_Oceans_Med/TOBG-MED-READCOUNTMATCH.bac120.tsv", checkm_filename = "TOBG-MED_qa.txt")
+tax_physeq <- import_gtdbtk_taxonomy_and_checkm(taxonomy_filename = "Tara_Oceans_Med/TOBG-MED-READCOUNTMATCH.bac120.tsv", checkm_filename = "TOBG-MED_qa.txt")
+meta_physeq <- import_metadata(province_filename = "Tara_Oceans_Med/Sample-Province.tsv", 
+                           sizeFraction_filename = "Tara_Oceans_Med/Sample-SizeFraction.tsv")
 
 # Import Readcounts
-otu <- read.delim("Tara_Oceans_Med/TOBG-MED-TOTAL.readcounts") %>%
+otu_physeq <- read.delim("Tara_Oceans_Med/TOBG-MED-TOTAL.readcounts") %>%
   dplyr::select(-Length) %>%
   column_to_rownames(var = "X") %>%
   otu_table(taxa_are_rows = TRUE)
 
-
-
-tara_med <- phyloseq(tax, otu)
+# Put into phyloseq object 
+tara_med <- phyloseq(meta_physeq, tax_physeq, otu_physeq)
 
 
