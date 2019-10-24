@@ -1,8 +1,8 @@
 
 
 #This function reads in a
-taxonomy_filename <- "TOBG-MED-READCOUNTMATCH.bac120.tsv"
-checkm_filename <- "TOBG-MED_qa.txt"
+taxonomy_filename <- "Tara_Oceans_Med/TOBG-MED-READCOUNTMATCH.bac120.tsv"
+checkm_filename <- "Tara_Oceans_Med/TOBG-MED_qa.txt"
 
 import_gtdbtk_taxonomy_and_checkm <- function(taxonomy_filename, checkm_filename) {
   
@@ -37,10 +37,23 @@ combined_tbl_no_prefixes <- dplyr::mutate_at(.tbl = combined_tbl, .vars =colname
 
 
 combined_matrix_2 <- as.matrix(combined_tbl_no_prefixes,ncol = ncol(combined_tbl_no_prefixes))
+rownames(combined_matrix_2) <- rownames(combined_mat)
 taxtab <- tax_table(combined_matrix_2)
 
 return(taxtab)
 }
 
+# Import the tax data
+tax <- import_gtdbtk_taxonomy_and_checkm(taxonomy_filename = "Tara_Oceans_Med/TOBG-MED-READCOUNTMATCH.bac120.tsv", checkm_filename = "TOBG-MED_qa.txt")
 
-tax <- import_gtdbtk_taxonomy_and_checkm(taxonomy_filename = "TOBG-MED-READCOUNTMATCH.bac120.tsv", checkm_filename = "TOBG-MED_qa.txt")
+# Import Readcounts
+otu <- read.delim("Tara_Oceans_Med/TOBG-MED-TOTAL.readcounts") %>%
+  dplyr::select(-Length) %>%
+  column_to_rownames(var = "X") %>%
+  otu_table(taxa_are_rows = TRUE)
+
+
+
+tara_med <- phyloseq(tax, otu)
+
+

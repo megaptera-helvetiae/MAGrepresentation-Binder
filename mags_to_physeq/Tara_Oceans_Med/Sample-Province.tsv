@@ -1,0 +1,238 @@
+tara004_bact_dcm	North Atlantic
+tara004_bact_surface	North Atlantic
+tara007_girus_dcm	Mediterranean
+tara007_girus_surface	Mediterranean
+tara007_prot_dcm	Mediterranean
+tara007_prot_surface	Mediterranean
+tara009_girus_dcm	Mediterranean
+tara009_girus_surface	Mediterranean
+tara009_prot_dcm	Mediterranean
+tara009_prot_surface	Mediterranean
+tara018_bact_dcm	Mediterranean
+tara018_bact_surface	Mediterranean
+tara023_bact_dcm	Mediterranean
+tara023_bact_surface	Mediterranean
+tara023_prot_dcm	Mediterranean
+tara023_prot_surface	Mediterranean
+tara025_bact_dcm	Mediterranean
+tara025_bact_surface	Mediterranean
+tara030_bact_dcm	Mediterranean
+tara030_bact_surface	Mediterranean
+tara030_prot_dcm	Mediterranean
+tara030_prot_surface	Mediterranean
+tara031_bact_surface	Red Sea
+tara032_bact_dcm	Red Sea
+tara032_bact_surface	Red Sea
+tara033_bact_surface	Red Sea
+tara034_bact_dcm	Red Sea
+tara034_bact_surface	Red Sea
+tara034_girus_surface	Red Sea
+tara036_bact_dcm	Arabian Sea
+tara036_bact_surface	Arabian Sea
+tara036_girus_surface	Arabian Sea
+tara037_girus_meso	Arabian Sea
+tara037_prot_meso	Arabian Sea
+tara038_girus_meso	Arabian Sea
+tara038_girus_surface	Arabian Sea
+tara038_prot_dcm	Arabian Sea
+tara038_prot_meso	Arabian Sea
+tara038_prot_surface	Arabian Sea
+tara039_bact_dcm	Arabian Sea
+tara039_bact_meso	Arabian Sea
+tara039_girus_meso	Arabian Sea
+tara039_girus_surface	Arabian Sea
+tara041_girus_surface	Arabian Sea
+tara041_virus_dcm	Arabian Sea
+tara041_virus_surface	Arabian Sea
+tara042_bact_dcm	Indian Ocean
+tara042_bact_surface	Indian Ocean
+tara042_virus_dcm	Indian Ocean
+tara042_virus_surface	Indian Ocean
+tara045_bact_surface	Indian Ocean
+tara046_girus_surface	Indian Ocean
+tara046_virus_surface	Indian Ocean
+tara056_bact_meso	East African Current
+tara056_bact_surface	East African Current
+tara056_virus_meso	East African Current
+tara056_virus_surface	East African Current
+tara057_bact_surface	East African Current
+tara058_bact_dcm	East African Current
+tara058_virus_dcm	East African Current
+tara062_bact_surface	East African Current
+tara062_virus_surface	East African Current
+tara064_bact_dcm	East African Current
+tara064_bact_meso	East African Current
+tara064_bact_surface	East African Current
+tara064_girus_dcm	East African Current
+tara064_prot_meso	East African Current
+tara064_virus_dcm	East African Current
+tara064_virus_meso	East African Current
+tara064_virus_surface	East African Current
+tara065_bact_dcm	East African Current
+tara065_bact_meso	East African Current
+tara065_bact_surface	East African Current
+tara065_girus_dcm	East African Current
+tara065_girus_surface	East African Current
+tara065_virus_dcm	East African Current
+tara066_bact_dcm	South Atlantic
+tara066_bact_surface	South Atlantic
+tara066_virus_dcm	South Atlantic
+tara066_virus_surface	South Atlantic
+tara067_girus_surface	South Atlantic
+tara067_girus_surface	South Atlantic
+tara067_virus_surface	South Atlantic
+tara068_bact_dcm	South Atlantic
+tara068_bact_meso	South Atlantic
+tara068_bact_surface	South Atlantic
+tara068_girus_dcm	South Atlantic
+tara068_girus_meso	South Atlantic
+tara068_girus_surface	South Atlantic
+tara068_prot_dcm	South Atlantic
+tara068_virus_meso	South Atlantic
+tara068_virus_surface	South Atlantic
+tara070_bact_meso	South Atlantic
+tara070_bact_surface	South Atlantic
+tara070_girus_meso	South Atlantic
+tara070_girus_surface	South Atlantic
+tara070_virus_meso	South Atlantic
+tara070_virus_surface	South Atlantic
+tara072_bact_dcm	South Atlantic
+tara072_bact_meso	South Atlantic
+tara072_bact_surface	South Atlantic
+tara072_virus_dcm	South Atlantic
+tara072_virus_meso	South Atlantic
+tara072_virus_surface	South Atlantic
+tara076_bact_dcm	South Atlantic
+tara076_bact_meso	South Atlantic
+tara076_girus_dcm	South Atlantic
+tara076_girus_meso	South Atlantic
+tara076_girus_surface	South Atlantic
+tara076_virus_dcm	South Atlantic
+tara076_virus_meso	South Atlantic
+tara076_virus_surface	South Atlantic
+tara078_bact_dcm	South Atlantic
+tara078_bact_meso	South Atlantic
+tara078_girus_dcm	South Atlantic
+tara078_girus_meso	South Atlantic
+tara078_girus_surface	South Atlantic
+tara078_virus_dcm	South Atlantic
+tara078_virus_surface	South Atlantic
+tara082_virus_dcm	South Atlantic
+tara082_virus_surface	South Atlantic
+tara093_bact_dcm	Chile Peru Current
+tara093_bact_surface	Chile Peru Current
+tara093_prot_dcm	Chile Peru Current
+tara093_prot_surface	Chile Peru Current
+tara094_bact_surface	South Pacific
+tara096_bact_surface	South Pacific
+tara096_prot_dcm	South Pacific
+tara096_prot_surface	South Pacific
+tara098_bact_dcm	South Pacific
+tara098_bact_meso	South Pacific
+tara098_bact_surface	South Pacific
+tara098_prot_dcm	South Pacific
+tara099_bact_surface	South Pacific
+tara100_prot_dcm	South Pacific
+tara100_prot_meso	South Pacific
+tara100_prot_surface	South Pacific
+tara100_virus_dcm	South Pacific
+tara100_virus_meso	South Pacific
+tara100_virus_surface	South Pacific
+tara102_prot_dcm	Chile Peru Current
+tara102_prot_meso	Chile Peru Current
+tara102_prot_surface	Chile Peru Current
+tara102_virus_dcm	Chile Peru Current
+tara102_virus_meso	Chile Peru Current
+tara102_virus_surface	Chile Peru Current
+tara109_prot_dcm	Chile Peru Current
+tara109_prot_meso	Chile Peru Current
+tara109_prot_surface	Chile Peru Current
+tara109_virus_dcm	Chile Peru Current
+tara109_virus_surface	Chile Peru Current
+tara110_bact_dcm	South Pacific
+tara110_bact_meso	South Pacific
+tara110_bact_surface	South Pacific
+tara110_prot_dcm	South Pacific
+tara110_prot_meso	South Pacific
+tara110_prot_surface	South Pacific
+tara111_bact_meso	South Pacific
+tara111_prot_dcm	South Pacific
+tara111_prot_meso	South Pacific
+tara111_prot_surface	South Pacific
+tara111_virus_dcm	South Pacific
+tara111_virus_surface	South Pacific
+tara112_bact_dcm	South Pacific
+tara112_bact_meso	South Pacific
+tara112_bact_surface	South Pacific
+tara122_girus_dcm	South Pacific
+tara122_girus_meso	South Pacific
+tara122_girus_surface	South Pacific
+tara122_prot_dcm	South Pacific
+tara122_prot_meso	South Pacific
+tara122_prot_surface	South Pacific
+tara122_virus_dcm	South Pacific
+tara122_virus_meso	South Pacific
+tara122_virus_surface	South Pacific
+tara123_girus_epi	South Pacific
+tara123_girus_surface	South Pacific
+tara123_prot_epi	South Pacific
+tara123_prot_surface	South Pacific
+tara123_virus_epi	South Pacific
+tara123_virus_surface	South Pacific
+tara124_girus_epi	South Pacific
+tara124_girus_surface	South Pacific
+tara124_prot_epi	South Pacific
+tara124_prot_surface	South Pacific
+tara124_virus_epi	South Pacific
+tara124_virus_surface	South Pacific
+tara125_girus_epi	South Pacific
+tara125_girus_surface	South Pacific
+tara125_prot_epi	South Pacific
+tara125_prot_surface	South Pacific
+tara125_virus_epi	South Pacific
+tara125_virus_surface	South Pacific
+tara128_bact_dcm	South Pacific
+tara128_bact_surface	South Pacific
+tara128_prot_dcm	South Pacific
+tara128_prot_surface	South Pacific
+tara133_bact_dcm	North Pacific
+tara133_bact_meso	North Pacific
+tara133_bact_surface	North Pacific
+tara137_bact_dcm	North Pacific
+tara137_bact_surface	North Pacific
+tara137_prot_dcm	North Pacific
+tara137_prot_meso	North Pacific
+tara137_prot_surface	North Pacific
+tara137_virus_dcm	North Pacific
+tara137_virus_meso	North Pacific
+tara137_virus_surface	North Pacific
+tara138_prot_dcm	North Pacific
+tara138_prot_meso	North Pacific
+tara138_prot_surface	North Pacific
+tara138_virus_dcm	North Pacific
+tara138_virus_meso	North Pacific
+tara138_virus_surface	North Pacific
+tara140_bact_surface	North Pacific
+tara141_bact_surface	North Atlantic
+tara142_bact_dcm	North Atlantic
+tara142_bact_meso	North Atlantic
+tara142_bact_surface	North Atlantic
+tara145_bact_meso	North Atlantic
+tara145_bact_surface	North Atlantic
+tara146_bact_meso	North Atlantic
+tara146_bact_surface	North Atlantic
+tara146_prot_meso	North Atlantic
+tara146_prot_surface	North Atlantic
+tara148_prot_surface	North Atlantic
+tara149_prot_meso	North Atlantic
+tara149_prot_surface	North Atlantic
+tara150_bact_dcm	North Atlantic
+tara150_prot_dcm	North Atlantic
+tara150_prot_surface	North Atlantic
+tara151_bact_dcm	North Atlantic
+tara151_prot_dcm	North Atlantic
+tara152_bact_meso	North Atlantic
+tara152_bact_mixed	North Atlantic
+tara152_bact_surface	North Atlantic
+tara152_prot_dcm	North Atlantic
+tara152_prot_meso	North Atlantic
