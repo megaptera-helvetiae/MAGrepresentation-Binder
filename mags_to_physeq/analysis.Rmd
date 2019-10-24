@@ -3,6 +3,8 @@ title: "MAG Representation"
 author: "Marian L Schmidt & Ian Morelan"
 date: "10/24/2019"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 # Load Packages & Functions
@@ -16,8 +18,9 @@ source("functions.R")
 
 ```{r import-data}
 # Import the tax data
-tax_physeq <- import_gtdbtk_taxonomy_and_checkm(taxonomy_filename = "Tara_Oceans_Med/TOBG-MED-READCOUNTMATCH.bac120.tsv",
-                                                checkm_filename = "Tara_Oceans_Med/TOBG-MED_qa.txt")
+tax_physeq <- import_gtdbtk_taxonomy_and_checkm(
+  taxonomy_filename = "Tara_Oceans_Med/TOBG-MED-READCOUNTMATCH.bac120.tsv",
+  checkm_filename = "Tara_Oceans_Med/TOBG-MED_qa.txt")
 
 # Import the metadata
 meta_physeq <- import_metadata(province_filename = "Tara_Oceans_Med/Sample-Province.tsv", 
@@ -30,7 +33,45 @@ mag_table <- import_readcounts(readcounts_filename = "Tara_Oceans_Med/TOBG-MED-T
 mag_tree <- import_tree(tree_filename = "Tara_Oceans_Med/GToTree_output.newick")
 
 # Put into phyloseq object 
-tara_med <- phyloseq(meta_physeq, tax_physeq, mag_table, mag_tree)
+tara_physeq <- phyloseq(meta_physeq, tax_physeq, mag_table, mag_tree)
 ```
 
-## R Markdown
+# Normalization
+```{r data-normalized, fig.height=10, fig.width=12}
+# Normalizing the matrix 
+# Dividing rows by the genome size for the bin
+# Genome size is different from Bin size
+# Genome size is BinSize * BinCompletion
+
+# Read in checkm data to calculate the expected 
+checkm <- read.csv("Tara_Oceans_Med/TOBG-MED_qa.txt", sep = "\t", as.is = TRUE) %>%
+  dplyr::select("Bin.Id", "Completeness", "Genome.size..bp.") %>%
+  rename(est_genome_size = "Genome.size..bp.") %>%
+  # Make a new column for the expected genome size based on est_genome_size * completeness
+  mutate(exp_genome_size = round(est_genome_size/(Completeness/100)))
+
+ordered_checkm <- data.frame(Bin.Id = rownames(mag_table)) %>%
+  left_join(checkm, by = "Bin.Id")
+
+#Sanity check 
+stopifnot(rownames(mag_table) == ordered_checkm$Bin.Id)
+
+# Do the normalization
+t_mat <- t(as.matrix(mag_table))
+# divide the matrix columns by the genome size of each MAG
+norm_mat <- t_mat/ordered_checkm$exp_genome_size
+t_norm_mat <- t(norm_mat)
+
+
+# Combine into a normalized phyloseq object
+tara_norm_physeq <- phyloseq(meta_physeq, tax_physeq, mag_tree, 
+                             otu_table(t_norm_mat, taxa_are_rows = TRUE))
+```
+
+
+
+## Heatmap
+
+```{r heatmap}
+heatmap(otu_table(tara_norm_physeq))
+```

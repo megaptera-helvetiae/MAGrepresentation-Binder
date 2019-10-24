@@ -48,10 +48,10 @@ return(taxtab)
 #### 2.
 import_metadata<- function(province_filename, sizeFraction_filename) {
   # Read in the provice info
-  prov_dat <- read.table(province_filename, sep = "\t") 
+  prov_dat <- read.table(province_filename, sep = "\t",  as.is=TRUE) 
   
   # Read in the size fraction info
-  sizeFrac_dat <- read.table(sizeFraction_filename, sep = "\t")
+  sizeFrac_dat <- read.table(sizeFraction_filename, sep = "\t",  as.is=TRUE)
   
   # Join together
   metadat <- left_join(prov_dat, sizeFrac_dat, by = "V1") %>%
@@ -65,7 +65,7 @@ import_metadata<- function(province_filename, sizeFraction_filename) {
 
 #### 3.
 import_readcounts <- function(readcounts_filename){
-  otu_physeq <- read.delim(readcounts_filename) %>%
+  otu_physeq <- read.delim(readcounts_filename,  as.is=TRUE) %>%
     dplyr::select(-Length) %>%
     column_to_rownames(var = "X") %>%
     otu_table(taxa_are_rows = TRUE)
