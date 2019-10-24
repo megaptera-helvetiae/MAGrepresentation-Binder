@@ -1,0 +1,36 @@
+---
+title: "MAG Representation"
+author: "Marian L Schmidt & Ian Morelan"
+date: "10/24/2019"
+output: html_document
+---
+
+# Load Packages & Functions
+```{r setup}
+source("functions.R")
+```
+
+
+
+# Load Data
+
+```{r import-data}
+# Import the tax data
+tax_physeq <- import_gtdbtk_taxonomy_and_checkm(taxonomy_filename = "Tara_Oceans_Med/TOBG-MED-READCOUNTMATCH.bac120.tsv",
+                                                checkm_filename = "Tara_Oceans_Med/TOBG-MED_qa.txt")
+
+# Import the metadata
+meta_physeq <- import_metadata(province_filename = "Tara_Oceans_Med/Sample-Province.tsv", 
+                           sizeFraction_filename = "Tara_Oceans_Med/Sample-SizeFraction.tsv")
+
+# Import the readcounts
+mag_table <- import_readcounts(readcounts_filename = "Tara_Oceans_Med/TOBG-MED-TOTAL.readcounts")
+
+# Import the tree
+mag_tree <- import_tree(tree_filename = "Tara_Oceans_Med/GToTree_output.newick")
+
+# Put into phyloseq object 
+tara_med <- phyloseq(meta_physeq, tax_physeq, mag_table, mag_tree)
+```
+
+## R Markdown

@@ -1,9 +1,11 @@
+# This file contains a few functions including:
+#     1.import_gtdbtk_taxonomy_and_checkm 
+#     2. import_metadata 
+#     3. import_readcounts
+#     4. import_tree
 
 
-#This function reads in a
-taxonomy_filename <- "Tara_Oceans_Med/TOBG-MED-READCOUNTMATCH.bac120.tsv"
-checkm_filename <- "Tara_Oceans_Med/TOBG-MED_qa.txt"
-
+#### 1.
 import_gtdbtk_taxonomy_and_checkm <- function(taxonomy_filename, checkm_filename) {
   
   library(phyloseq)
@@ -43,11 +45,7 @@ taxtab <- tax_table(combined_matrix_2)
 return(taxtab)
 }
 
-
-
-province_filename <- "Tara_Oceans_Med/Sample-Province.tsv"
-sizeFraction_filename <- "Tara_Oceans_Med/Sample-SizeFraction.tsv"
-
+#### 2.
 import_metadata<- function(province_filename, sizeFraction_filename) {
   # Read in the provice info
   prov_dat <- read.table(province_filename, sep = "\t") 
@@ -65,21 +63,22 @@ import_metadata<- function(province_filename, sizeFraction_filename) {
 }
 
 
-import_otu
+#### 3.
+import_readcounts <- function(readcounts_filename){
+  otu_physeq <- read.delim(readcounts_filename) %>%
+    dplyr::select(-Length) %>%
+    column_to_rownames(var = "X") %>%
+    otu_table(taxa_are_rows = TRUE)
+  # Return the otu object
+  return(otu_physeq)
+}    
 
-
-# Import the tax data
-tax_physeq <- import_gtdbtk_taxonomy_and_checkm(taxonomy_filename = "Tara_Oceans_Med/TOBG-MED-READCOUNTMATCH.bac120.tsv", checkm_filename = "TOBG-MED_qa.txt")
-meta_physeq <- import_metadata(province_filename = "Tara_Oceans_Med/Sample-Province.tsv", 
-                           sizeFraction_filename = "Tara_Oceans_Med/Sample-SizeFraction.tsv")
-
-# Import Readcounts
-otu_physeq <- read.delim("Tara_Oceans_Med/TOBG-MED-TOTAL.readcounts") %>%
-  dplyr::select(-Length) %>%
-  column_to_rownames(var = "X") %>%
-  otu_table(taxa_are_rows = TRUE)
-
-# Put into phyloseq object 
-tara_med <- phyloseq(meta_physeq, tax_physeq, otu_physeq)
+#### 4.
+import_tree <- function(tree_filename){
+  tree <- read_tree(tree_filename)
+  taxa_names(tree) <- gsub(taxa_names(tree), pattern = "-", replacement = "_")
+  # Return the tree object
+  return(tree)
+}
 
 
