@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571939082083.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3502876280",
+    "id" : "BF52C64D",
+    "lastKnownWriteTime" : 1571949701,
+    "last_content_update" : 1571949701308,
+    "path" : "~/Box Sync/mags_to_physeq/import_taxonomy_and_checkm.R",
+    "project_path" : "import_taxonomy_and_checkm.R",
+    "properties" : {
+        "cursorPosition" : "43,0",
+        "scrollLine" : "23",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

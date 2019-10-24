@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571949707234.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1B01D7FF",
+    "lastKnownWriteTime" : 1571949712,
+    "last_content_update" : 1571949712218,
+    "path" : "~/Box Sync/mags_to_physeq/import_counts.R",
+    "project_path" : "import_counts.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
